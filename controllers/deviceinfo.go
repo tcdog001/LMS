@@ -106,6 +106,7 @@ func (this *DeviceinfoController) Get() {
 		this.Data["TotalPages"] = totalPages
 	}
 	if nums <= 0 {
+		this.Data["CurPage"] = 0
 		this.Data["NoInfo"] = "没有注册设备!"
 	}
 }

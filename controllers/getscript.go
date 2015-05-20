@@ -30,8 +30,8 @@ func (this *GetScriptController) Get() {
 */
 
 func (this *GetScriptController) Post() {
-	//用户身份认证
 	ret := GetScriptData{}
+	//用户身份认证
 	uname, pwd, ok := this.Ctx.Request.BasicAuth()
 	if !ok {
 		beego.Info("get client  Request.BasicAuth failed!")

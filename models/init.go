@@ -11,7 +11,17 @@ func init() {
 	//register mysql driver
 	orm.RegisterDriver("mysql", orm.DR_MySQL)
 	//register default database
-	orm.RegisterDataBase("default", "mysql", "root:autelan@/lte_test?charset=utf8&&loc=Asia%2FShanghai")
+	dbIp := beego.AppConfig.String("DbIp")
+	dbPort := beego.AppConfig.String("DbPort")
+	dbName := beego.AppConfig.String("DbName")
+	dbUser := beego.AppConfig.String("DbUser")
+	dbPassword := beego.AppConfig.String("DbPassword")
+
+	dbUrl := dbUser + ":" + dbPassword + "@tcp(" + dbIp + ":" + dbPort + ")/" + dbName + "?charset=utf8&loc=Asia%2FShanghai"
+	beego.Debug("dbUrl=", dbUrl)
+
+	err = orm.RegisterDataBase("default", "mysql", dbUrl)
+	//orm.RegisterDataBase("default", "mysql", "root:autelan@/lte_test?charset=utf8&&loc=Asia%2FShanghai")
 
 	orm.SetMaxIdleConns("default", 30)
 	orm.SetMaxOpenConns("default", 30)

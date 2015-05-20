@@ -10,7 +10,8 @@ import (
 )
 
 const (
-	IPDAT = "datas/qqwry.dat"
+	IPDAT      = "datas/qqwry.dat"
+	ClientCert = "datas/root.crt"
 )
 
 type RegisterData struct {

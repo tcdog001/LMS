@@ -25,8 +25,8 @@ func (this *UnRegisterController) Get() {
 (-2) other error
 */
 func (this *UnRegisterController) Post() {
-	//用户认证
 	ret := UnRegisterData{}
+	//用户认证
 	uname, pwd, ok := this.Ctx.Request.BasicAuth()
 	if !ok {
 		beego.Info("get client  Request.BasicAuth failed!")

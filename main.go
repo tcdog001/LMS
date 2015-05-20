@@ -6,6 +6,7 @@ import (
 	_ "LMS/routers"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
+	//"github.com/deferpanic/deferclient/deferstats"
 )
 
 func init() {
@@ -28,6 +29,8 @@ func main() {
 		beego.Critical("sycndb error! Error:", err)
 	}
 
+	//开启defer panic支持
+	//deferstats.NewClient("kxHlEw0EeO5OQj4GNqIG58jsE81p2356")
 
 	//启动服务
 	beego.Trace("LMS start running...")
