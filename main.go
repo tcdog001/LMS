@@ -6,7 +6,7 @@ import (
 	_ "LMS/routers"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	//"github.com/deferpanic/deferclient/deferstats"
+	_ "github.com/astaxie/beego/session/redis"
 )
 
 func init() {
@@ -17,6 +17,14 @@ func init() {
 
 	//设置下载脚本目录
 	beego.SetStaticPath("/script_download", "script_download")
+
+	//设置session
+	beego.SessionOn = true
+	beego.SessionProvider = "redis"
+	beego.SessionSavePath = "192.168.15.43:6379"
+	beego.SessionName = "LMSsessionID"
+	beego.SessionGCMaxLifetime = 60
+	beego.SessionCookieLifeTime = 60
 }
 
 func main() {

@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -9,7 +10,10 @@ func init() {
 	//register all tables
 	orm.RegisterModel(new(Userinfo), new(Admininfo), new(Deviceinfo), new(Historyinfo), new(Command), new(OperationRecord), new(Alarm), new(Script))
 	//register mysql driver
-	orm.RegisterDriver("mysql", orm.DR_MySQL)
+	err := orm.RegisterDriver("mysql", orm.DR_MySQL)
+	if err != nil {
+		beego.Critical(err)
+	}
 	//register default database
 	dbIp := beego.AppConfig.String("DbIp")
 	dbPort := beego.AppConfig.String("DbPort")
@@ -21,6 +25,9 @@ func init() {
 	beego.Debug("dbUrl=", dbUrl)
 
 	err = orm.RegisterDataBase("default", "mysql", dbUrl)
+	if err != nil {
+		beego.Critical(err)
+	}
 	//orm.RegisterDataBase("default", "mysql", "root:autelan@/lte_test?charset=utf8&&loc=Asia%2FShanghai")
 
 	orm.SetMaxIdleConns("default", 30)

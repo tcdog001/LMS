@@ -16,6 +16,7 @@ func (this *HomeController) Get() {
 		this.Redirect("/", 302)
 		return
 	}
+	beego.Debug("session id=", session)
 	CurUser := this.Input().Get("CurUser")
 	beego.Debug("CurUser=", CurUser)
 
