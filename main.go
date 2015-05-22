@@ -12,19 +12,20 @@ import (
 func init() {
 	//设置log格式
 	beego.SetLogger("file", `{"filename":"logs/server.log"}`)
-	beego.SetLogFuncCall(true)
 	beego.SetLevel(beego.LevelDebug)
 
 	//设置下载脚本目录
 	beego.SetStaticPath("/script_download", "script_download")
 
 	//设置session
-	beego.SessionOn = true
-	beego.SessionProvider = "redis"
-	beego.SessionSavePath = "192.168.15.43:6379"
-	beego.SessionName = "LMSsessionID"
-	beego.SessionGCMaxLifetime = 60
-	beego.SessionCookieLifeTime = 60
+	/*
+		beego.SessionOn = true
+		beego.SessionProvider = "redis"
+		beego.SessionSavePath = "192.168.15.43:6379"
+		beego.SessionName = "LMSsessionID"
+		beego.SessionGCMaxLifetime = 60
+		beego.SessionCookieLifeTime = 60
+	*/
 }
 
 func main() {

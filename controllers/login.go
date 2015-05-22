@@ -10,7 +10,6 @@ type LoginController struct {
 }
 
 func (this *LoginController) Get() {
-	beego.Debug(this.Ctx.Input.IP())
 	this.TplNames = "login.html"
 	this.Data["IsMatched"] = false
 	ShowError := this.Input().Get("ShowError")
